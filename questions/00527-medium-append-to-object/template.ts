@@ -1,1 +1,3 @@
-type AppendToObject<T, U, V> = any
+export type AppendToObject<T, U extends string, V> = {
+  [k in keyof T | U]: k extends keyof T ? T[k] : V
+}
