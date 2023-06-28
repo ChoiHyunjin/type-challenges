@@ -1,4 +1,5 @@
 import type { Equal, Expect } from '@type-challenges/utils'
+import type { Absolute } from './template'
 
 type cases = [
   Expect<Equal<Absolute<0>, '0'>>,
