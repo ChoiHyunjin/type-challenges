@@ -1,4 +1,5 @@
 import type { Equal, Expect } from '@type-challenges/utils'
+import type { Permutation } from './template'
 
 type cases = [
   Expect<Equal<Permutation<'A'>, ['A']>>,
