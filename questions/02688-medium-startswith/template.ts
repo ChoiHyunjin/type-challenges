@@ -1,1 +1,7 @@
-type StartsWith<T extends string, U extends string> = any
+type StartsWith<T extends string, U extends string> =
+    T extends `${infer FirstOfT}${infer RestOfT}`
+      ? U extends `${infer FirstOfU}${infer RestOfU}`
+        ? FirstOfT extends FirstOfU ? StartsWith<RestOfT, RestOfU>
+          : false
+        : true
+      : false
