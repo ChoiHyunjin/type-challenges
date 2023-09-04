@@ -1,1 +1,6 @@
-type MyReadonly2<T, K> = any
+// todo: 다시 풀기
+type MyReadonly2<T, K extends keyof T = keyof T> = {
+  readonly [key in K]: T[key]
+} & {
+  [key in keyof T as key extends K ? never : key]: T[key]
+}
