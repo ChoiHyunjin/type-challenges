@@ -17,11 +17,3 @@ type ParseUrlParams<T extends string, Splited extends string[] = SplitSlash<T>> 
 //       : Temp extends ''
 //         ? Exclude<Result, ''>
 //         : ParseUrlParams<'', '', T extends '/' ? Temp : `${Temp}${T}` | Result>
-
-type T1 = ParseUrlParams<'posts/:id/:user'>
-type T2 = ParseUrlParams<'posts/:id'>
-type T3 = ParseUrlParams<'posts/:id/'>
-type T4 = ParseUrlParams<'posts/:id/:user/like'>
-type T5 = ParseUrlParams<':like'>
-
-type R1 = SplitSlash<'posts/:id/:user'>
