@@ -23,5 +23,3 @@ type AddElement<T extends CountElementNumberToObjectResult, U extends ObjectKey>
     Omit<T, U> & {
       [key in U]: key extends keyof T ? [...T[key], unknown] : [unknown]
     }
-
-type T1 = Flatten2<[1, 2, 3, 4, 5, [1, 2, [4, 4, 1, 2], 3]]>
