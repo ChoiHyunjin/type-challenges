@@ -7,11 +7,10 @@ type JSONMap = {
 type JSONSchema = {
   type: JSONType
   enum?: unknown[]
-  properties?: Record<string, JSONSchema>
   items?: JSONSchema
+  properties?: Record<string, JSONSchema>
+  required?: string[]
 }
-
-type RequiredJSONSchema = JSONSchema & { required?: string[] }
 
 type CombineObjects<T extends object, K extends object> = {
   [key in keyof (T & K)]: (T & K)[key]
@@ -22,7 +21,7 @@ type RequiredTS<T extends object, K extends (keyof T)> =
           { [key in keyof T as key extends K ? key : never]-?: T[key] },
           { [key in keyof T as key extends K ? never : key]: T[key] }>
 
-type JSONSchema2TS<T extends RequiredJSONSchema> =
+type JSONSchema2TS<T extends JSONSchema> =
     T['type'] extends 'object'
       ? T['properties'] extends object
         ? T['required'] extends string[]
